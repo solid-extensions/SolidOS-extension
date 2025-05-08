@@ -49,9 +49,7 @@ To test the extension:
 
 2. Visit a URL that returns Turtle data with the `text/turtle` MIME type. Some examples:
 
-   - https://solidcommunity.net/.well-known/solid
-   - https://solidweb.org/.well-known/solid
-   - https://solidproject.org/.well-known/solid
+- https://solid-extensions.github.io/SolidOS-extension/state.ttl
 
 3. The extension should automatically redirect to the SolidOS data browser interface
 
