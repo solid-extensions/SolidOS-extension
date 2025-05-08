@@ -1,0 +1,649 @@
+@prefix : <#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix schema: <http://schema.org/>.
+@prefix sioc: <http://rdfs.org/sioc/ns#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix wf: <http://www.w3.org/2005/01/wf/flow#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ind: <index.ttl#>.
+@prefix pc: <https://sip.cs.princeton.edu/projects/pca/>.
+@prefix medi: <https://noeldemartin.github.io/media-kraken/>.
+@prefix c: </profile/card#>.
+@prefix c0: <https://timbl.inrupt.net/profile/card#>.
+@prefix sol: <https://gitter.im/solid/>.
+@prefix m: <https://github.com/inrupt/pod-browser/tree/master/>.
+@prefix c1: <https://timbl.solidcommunity.net/profile/card#>.
+@prefix inr: <https://github.com/inrupt/>.
+@prefix web: <https://web.inox.app/>.
+@prefix c2: <https://sideshowtom.solidcommunity.net/profile/card#>.
+@prefix iss: <https://github.com/m-ld/m-ld-spec/issues/>.
+@prefix liv: <https://forum.solidproject.org/t/live-shared-pod-data-making-it-happen/>.
+@prefix p: <https://github.com/solid/solid/blob/main/proposals/patch-directions.md#>.
+@prefix so: <https://github.com/solid/>.
+@prefix fun: <https://funkwhale.audio/>.
+@prefix in: <../Access%20Control%20Lists/ACL%20Tasks/index.ttl#>.
+
+ind:this wf:stateStore <>.
+
+:Iss1595415193957
+a ind:ClientCore, ind:Works;
+dc:title "Preferences";
+dct:created "2020-07-22T10:53:13Z"^^xsd:dateTime;
+wf:attachment so:solid-ui;
+wf:description
+"Preferences handling where personal prefs for the class of object in general are merged with those for the specific object from the user, and from the maker of the object.";
+wf:tracker ind:this.
+:Iss1595415369013
+a ind:ClientExtended, ind:InProgress;
+dc:title "Single sign-in authentication";
+dct:created "2020-07-22T10:56:09Z"^^xsd:dateTime;
+wf:attachment
+inr:solid-client-authn-js,
+<https://solidos.github.io/solid-ui/src/icons/noun_Upload_76574_000000.svg>;
+wf:tracker ind:this.
+:Iss1595421341195
+a ind:ClientCore, ind:Released;
+dc:title "Live Update";
+dct:created "2020-07-22T12:35:41Z"^^xsd:dateTime;
+wf:description
+"AKA Real time collaboration (RTC) .. people working on different views of the same thing see each others changes in real time.";
+wf:tracker ind:this.
+:Iss1595421454029
+a ind:ClientCore, ind:Released;
+dc:title "Read";
+dct:created "2020-07-22T12:37:34Z"^^xsd:dateTime;
+wf:description "The ability to read data from the web of linked data";
+wf:tracker ind:this.
+:Iss1595421512954
+a ind:ClientCore, ind:Released;
+dc:title "Write";
+dct:created "2020-07-22T12:38:32Z"^^xsd:dateTime;
+wf:description
+"The ability to write data into the web of linked data. To correct and update things.";
+wf:tracker ind:this.
+:Iss1595421601988
+a ind:ClientCore, ind:Released;
+dc:title "High Speed Updates";
+dct:created "2020-07-22T12:40:01Z"^^xsd:dateTime;
+wf:description
+"""The ability to efficiently change a small part of a linked data web.
+
+Solid uses a PATCH with as payload subset of SPARQL Update protocol, has now moved to N3Patch, which allows a statements to be deleted or inserted or both. When something to be changed involves blank nodes, then the client generates a WHERE clause to identify them using nearby ars in the graph.
+
+Solid also relies on the ability use a triple in a solid resource as a semaphore, for coordinating concurrent ediitng by different parties. It requires a 409 conflict response when the user tries to delete a triple which does not exist. This is currently still not resolved with the SPARQL group as they specify deletes to fail silently. """;
+wf:tracker ind:this.
+:Iss1595421688630
+a ind:ClientCore, ind:ToBeDone;
+dc:title "Manage multiple solid IDs";
+dct:created "2020-07-22T12:41:28Z"^^xsd:dateTime;
+wf:description
+"""Allow the user to see which storage resources are available, of many.
+Allow the user to declare that two IDs both belong to the same person.
+Allow the user to declare that one ID is their preferred one.
+
+Manage different VCs that they have in each persona.
+
+In my contacts, manage my knowledge of other peoples' multiple IDs""";
+wf:tracker ind:this.
+:Iss1595422644037
+a ind:ClientCore, ind:Someday;
+dc:title "Proof-Carrying Authorization";
+dct:created "2020-07-22T12:57:24Z"^^xsd:dateTime;
+wf:attachment pc:;
+wf:description "\"PCA\" ";
+wf:tracker ind:this.
+:Iss1595429718972
+a ind:ClientExtended, ind:ToBeDone;
+dc:title "pod-wide queries";
+dct:created "2020-07-22T14:55:18Z"^^xsd:dateTime;
+wf:description
+"When a user needs to acces application data in their pod, we try to organize that pod so that they can do that by following links in a simple way between related things. Howver There going to times when that is inefficient compared to being able to run a query across all or some od the pod on the server side, and return the results to the client. ";
+wf:tracker ind:this.
+:Iss1595430882277
+a ind:DeveloperTools, ind:InProgress;
+dc:title "Solid Server Test Suite";
+dct:created "2020-07-22T15:14:42Z"^^xsd:dateTime;
+wf:description
+"This is a huge collaborative effort to have a test issue which be pointed at any solid server and will validate that it is indeed a solid server,";
+wf:message :Msg1595433283624;
+wf:tracker ind:this.
+:Iss1595438207094
+a ind:OSCore, ind:ToBeDone;
+dc:title "Server-wide queries";
+dct:created "2020-07-22T17:16:47Z"^^xsd:dateTime;
+wf:description
+"""This is needed by a bunch of good things. Discussion has mentioned Triple Pattern Fragments as well as SPARQL.
+
+This is a logical query function, not a user-facing text-based search. """;
+wf:message :Msg1600893931849;
+wf:tracker ind:this.
+:Iss1595438243502
+a ind:ClientExtended, ind:Someday;
+dc:title "Track licenses of data";
+dct:created "2020-07-22T17:17:23Z"^^xsd:dateTime;
+wf:description "Eg CC0, etc to help user use data they are allowed to";
+wf:tracker ind:this.
+:Iss1595438319814
+a ind:ClientExtended, ind:Someday;
+dc:title "Versioning immutable snapshots";
+dct:created "2020-07-22T17:18:39Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1595438343521
+a ind:ClientExtended, ind:Someday;
+dc:title "Sync with archive";
+dct:created "2020-07-22T17:19:03Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1595438374954
+a ind:ClientExtended, ind:Someday;
+dc:title "Real-time peer-peer sync a la CRDT";
+dct:created "2020-07-22T17:19:34Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1595438407597
+a ind:Someday;
+dc:title "Provenance";
+dct:created "2020-07-22T17:20:07Z"^^xsd:dateTime;
+wf:description
+"Track provenance of data a and docs to help user determine trust and help journalists publish the provenance of their work";
+wf:tracker ind:this.
+:Iss1595438497668
+a ind:ClientExtended, ind:ToBeDone;
+dc:title "Atomic multi-file updates";
+dct:created "2020-07-22T17:21:37Z"^^xsd:dateTime;
+wf:attachment
+<Files/Iss1595438497668/download%20(1).jpeg>,
+<Files/Iss1595438497668/image.jpeg>;
+wf:tracker ind:this.
+:Iss1595438531750
+a ind:ClientExtended, ind:Someday;
+dc:title "Scaling for many servers";
+dct:created "2020-07-22T17:22:11Z"^^xsd:dateTime;
+wf:description "Federated query for example";
+wf:tracker ind:this.
+:Iss1595438602221
+a ind:ClientExtended, ind:Someday;
+dc:title "Replication for speed";
+dct:created "2020-07-22T17:23:22Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1595438643708
+a ind:ClientExtended, ind:ToBeDone;
+dc:title "Offline working";
+dct:created "2020-07-22T17:24:03Z"^^xsd:dateTime;
+wf:attachment <https://www.inkandswitch.com/local-first.html>;
+wf:description
+"""Including the spirit of localfirst
+Requires UI for conflict resolution, and undo
+""";
+wf:message :Msg1595438722731;
+wf:tracker ind:this.
+:Iss1595442298978
+a ind:OSCore, ind:ToBeDone;
+dc:title "On boarding users";
+dct:created "2020-07-22T18:24:58Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1595442350409
+a ind:InProgress, ind:OSCore;
+dc:title "Dashboard/Dock/Phonetop";
+dct:created "2020-07-22T18:25:50Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1595442381852
+a ind:OSCore, ind:ToBeDone;
+dc:title "Timeline";
+dct:created "2020-07-22T18:26:21Z"^^xsd:dateTime;
+wf:description
+"A way for users and others to get at their and other people's stuff in chronological order.";
+wf:tracker ind:this.
+:Iss1595442449002
+a ind:InProgress, ind:OSCore;
+dc:title "Like button etc";
+dct:created "2020-07-22T18:27:29Z"^^xsd:dateTime;
+wf:description
+"And other actions. Solid is about being able to anything with anything, so social actions, like like, bookmark, thumbs up/down, ping a @person, and #keyword all should be generic code which can be used in many places - on messages, people, files, contacts, etc etc";
+wf:tracker ind:this.
+:Iss1595442667293
+a ind:InProgress, ind:OSCore;
+dc:title "Profile and editor";
+dct:created "2020-07-22T18:31:07Z"^^xsd:dateTime;
+wf:description
+"""A benefit the user should get from getting a solid account is that they can point people at their solid ID like a business card, and that when people look that up they get something the user is proud of.
+
+The user projects their public persona with their public profile. The profile editor must give them the chance to customize it to express their individuality. (Or optionally of course just leave an anonymous pseudonym and avatar)""";
+wf:tracker ind:this.
+:Iss1595444821334
+a ind:OSCore, ind:ToBeDone;
+dc:title "Search UI";
+dct:created "2020-07-22T19:07:01Z"^^xsd:dateTime;
+wf:description "Pod wide search";
+wf:tracker ind:this.
+:Iss1595444901779
+a ind:InProgress, ind:OSCore;
+dc:title "Basic Operating System UI";
+dct:created "2020-07-22T19:08:21Z"^^xsd:dateTime;
+wf:attachment web:timeline;
+wf:description
+"Global navigation, connection of common entry start points such as: timeline, objects by type, Pods, Contacts, notifications, Profile editor, general preferences, and Apps";
+wf:tracker ind:this.
+:Iss1595445113453
+a ind:OSCore, ind:Released;
+dc:title "Preferences editor";
+dct:created "2020-07-22T19:11:53Z"^^xsd:dateTime;
+wf:description
+"""Bother preferences editing code in general (working)
+
+- and also using that code to make the solid user's core common preferences such as preferred languages, trusted apps, etc etc etc""";
+  wf:tracker ind:this.
+  :Iss1595445258249
+  a ind:DeveloperTools, ind:Someday;
+  dc:title "User Interface Builder";
+  dct:created "2020-07-22T19:14:18Z"^^xsd:dateTime;
+  wf:description
+  "A WYSIWYG app for developers -- or even power users -- to design their own apps using drag and drop.";
+  wf:tracker ind:this.
+  :Iss1595445397107
+  a ind:DeveloperTools, ind:Someday;
+  dc:title "Forms, Shapes and Queries";
+  dct:created "2020-07-22T19:16:37Z"^^xsd:dateTime;
+  wf:description
+  "Tools for building systems using these languages, and converting between them.";
+  wf:tracker ind:this.
+  :Iss1595445551884
+  a ind:DeveloperTools, ind:Someday;
+  dc:title "Ontology Editor";
+  dct:created "2020-07-22T19:19:11Z"^^xsd:dateTime;
+  wf:tracker ind:this.
+  :Iss1595445589130
+  a ind:DeveloperTools, ind:InProgress;
+  dc:title "On-boarding for developers";
+  dct:created "2020-07-22T19:19:49Z"^^xsd:dateTime;
+  wf:tracker ind:this.
+  :Iss1595445699139
+  a ind:InProgress, ind:Vertical;
+  dc:title "Healthcare";
+  dct:created "2020-07-22T19:21:39Z"^^xsd:dateTime;
+  wf:attachment <https://www.hl7.org/fhir/rdf.html>;
+  wf:description
+  "See the FHIR ontology work. A lot of Covid-related projects.";
+  wf:tracker ind:this.
+  :Iss1595445852296
+  a ind:Vertical, ind:Works;
+  dc:title "Fitness";
+  dct:created "2020-07-22T19:24:12Z"^^xsd:dateTime;
+  wf:description
+  """Tracking exercise activities and fitness state.
+  Connects to Healthcare (patient fitness data) and Geospatial (maps of runs)""";
+  wf:tracker ind:this.
+  :Iss1595446011146
+  a ind:Someday, ind:Vertical;
+  dc:title "Refugee status tracking";
+  dct:created "2020-07-22T19:26:51Z"^^xsd:dateTime;
+  wf:tracker ind:this.
+  :Iss1595446073477
+  a ind:Someday;
+  dc:title "Conference management";
+  dct:created "2020-07-22T19:27:53Z"^^xsd:dateTime;
+  wf:description
+  "Like EZ-chair and things like that. Manage papers, peer review, event program. See also: semantic web conference dogfooding.";
+  wf:tracker ind:this.
+  :Iss1595446305354
+  a ind:Someday, ind:Vertical;
+  dc:title "Collaboration & Project Management";
+  dct:created "2020-07-22T19:31:45Z"^^xsd:dateTime;
+  wf:description
+  """Like Github, Gitlab, Jira, etc Trackers, linking resources and project and people, review, chat. Group process.
+  And Slack
+  """;
+  wf:tracker ind:this.
+  :Iss1595446648094
+  a ind:Someday, ind:Vertical;
+  dc:title "Port to Raspberry Pi";
+  dct:created "2020-07-22T19:37:28Z"^^xsd:dateTime;
+  wf:tracker ind:this.
+  :Iss1595446709060
+  a ind:Someday, ind:Vertical;
+  dc:title "App Inventor: port to Solid";
+  dct:created "2020-07-22T19:38:29Z"^^xsd:dateTime;
+  wf:tracker ind:this.
+  :Iss1595446780516
+  a ind:Someday, ind:Vertical;
+  dc:title "Port MAVO to run on Solid";
+  dct:created "2020-07-22T19:39:40Z"^^xsd:dateTime;
+  wf:tracker ind:this.
+  :Iss1595446882787
+  a ind:Someday, ind:Vertical;
+  dc:title "Beneficent Organization: Institution";
+  dct:created "2020-07-22T19:41:22Z"^^xsd:dateTime;
+  wf:tracker ind:this.
+  :Iss1595446912332
+  a ind:Someday, ind:Vertical;
+  dc:title "App Store: Service";
+  dct:created "2020-07-22T19:41:52Z"^^xsd:dateTime;
+  wf:description
+  "Really not an App, but a common service which would be part of the ecosystem.";
+  wf:tracker ind:this.
+  :Iss1595450955487
+  a ind:Someday, ind:Vertical;
+  dc:title "Professional Profile (LinkedIn like)";
+  dct:created "2020-07-22T20:49:15Z"^^xsd:dateTime;
+  wf:description
+  """Connects to onboarding and to profile editor.
+  Professional (like Linked in) and Academic (Like ResearchGate) are both interesting, and merge.""";
+  wf:message :Msg1595596711930;
+  wf:tracker ind:this.
+  :Iss1595501681113
+  a ind:OSCore, ind:Released;
+  dc:title "Chat: Instant messages";
+  dct:created "2020-07-23T10:54:41Z"^^xsd:dateTime;
+  wf:attachment sol:chat-app;
+  wf:description
+  """The ability to have chat with another person, with a group, or and an open set of people who join, but are tracked as a group. Either public or shared with a group, or
+  Like Slack, Like What'sApp Chat, like Instagram, Like the chat on the side of a video confeernce, or like twitter. Must be configurable to be light or powerful.""";
+  wf:message :Msg1595502123910, :Msg1597273983364;
+  wf:tracker ind:this.
+  :Iss1595502698406
+  a ind:Released, ind:Vertical;
+  dc:title "Issue Tracking";
+  dct:created "2020-07-23T11:11:38Z"^^xsd:dateTime;
+  wf:attachment so:issue-pane;
+  wf:description
+  """Issue trackers occur in many forms: todo-lists, shopping lists, software project bug trackers, jira boards and so on. The Solid world should be able to make an issue tracker about anything, from the from Development Goals to corporate objectives to ephemeral lists of things ti do in a given hour.
+
+Aggregation between different tasks could be valuable, like "show me all the things I assigned to do across all my life" as part of my dashboard.""";
+wf:tracker ind:this.
+:Iss1595605284130
+a ind:ClientCore, ind:Works;
+dc:title "Capabilities - Auth in the URI";
+dct:created "2020-07-24T15:41:24Z"^^xsd:dateTime;
+wf:description
+"One use case for these is for interactibg with other systems, who will not be able to log in with OIDC";
+wf:tracker ind:this.
+:Iss1595605528698
+a ind:ClientExtended, ind:InProgress;
+dc:title "Verifiable Credentials";
+dct:created "2020-07-24T15:45:28Z"^^xsd:dateTime;
+wf:attachment liv:4061, iss:62, p:directions-for-patch-distribution;
+wf:description
+"""Digital signature of RDF documents, showing that an authority supports them. Needs a key infrastructure. Example use cases are
+
+- you checking a person who says they are a doctor, your app checks their VC.
+- requiring a VC at login time
+- requiring a VC at authorization time in the ACL system""";
+  wf:message
+  :Msg1622629984131, :Msg1622630060345, :Msg1622630233383, :Msg1622630274709;
+  wf:tracker ind:this;
+  ui:sharedPreferences :SharedPreferences.
+  :Iss1595679024451
+  a ind:ClientExtended, ind:Someday;
+  dc:title "ActivityPub integration";
+  dct:created "2020-07-25T12:10:24Z"^^xsd:dateTime;
+  wf:description
+  """client to client, client to server, server to server
+
+Not really sure what this integration will mean. Some relevant links are https://github.com/solid/external-interop-panel/issues/4#issuecomment-640227867 and https://github.com/solid/node-solid-server/issues/621.""";
+wf:tracker ind:this.
+:Iss1596038521831
+a ind:InProgress, ind:Vertical;
+dc:title "Manage and Share Media";
+dct:created "2020-07-29T16:02:01Z"^^xsd:dateTime;
+wf:attachment fun:, medi:login;
+wf:description
+"""To be able to browse, manage and share photos, sounds, music, videos, and so on, including albums and playlists. Be able to operate with al the media resources in your world, including your own, your family's, those of groups you work with, and also public resources such as fan sites and museums and galleries.
+
+To be able to create and edit your own playlists and your own works.""";
+wf:tracker ind:this.
+:Iss1596565176905
+a ind:DeveloperTools, ind:ToBeDone;
+dc:title "Shape and Ontology Hub: (Institution)";
+dct:created "2020-08-04T18:19:36Z"^^xsd:dateTime;
+wf:description
+"""Like github for ontologies and shapes.
+Find the shapes you need
+Register shapes. Collborate about developing shapes.
+""";
+wf:tracker ind:this.
+:Iss1596565546523
+a ind:Released, ind:Vertical;
+dc:title "Blogs, Podcasts, Instagram: follow me";
+dct:created "2020-08-04T18:25:46Z"^^xsd:dateTime;
+wf:description
+"""Create a blog or status or photo stream.
+Ability to manage who you follow.""";
+wf:tracker ind:this.
+:Iss1596569896426
+a ind:Someday, ind:Vertical;
+dc:title "Calendar";
+dct:created "2020-08-04T19:38:16Z"^^xsd:dateTime;
+wf:description
+"""Calendar and event functionality.
+Like and compatible with online calendars (le.g. CalDav)
+
+With solid extras to allow other dimensions of solid to be connected, like polls for when people are free, like agendas and minutes, and chats and video conferences.""";
+wf:tracker ind:this.
+:Iss1596569916897
+a ind:Someday, ind:Vertical;
+dc:title "Travel";
+dct:created "2020-08-04T19:38:36Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1596569962468
+a ind:Someday, ind:Vertical;
+dc:title "Retail - consumer shopping data";
+dct:created "2020-08-04T19:39:22Z"^^xsd:dateTime;
+wf:description
+"One large retailers has a lot fo data about each person who shops with them. Suppose instead consumers used solid to keep track of their own purchases -- from everywhere they shop, not just one store. Then they would have better data about themselves than an one store.\n\nThey could use this to decide what to buy next, optionally sharing it stores, travel agents, and so on, to find thing s which will be great in future\n\nVendor Relationship Management. Manage your guarantees and returns. Vendor rating.\n\nSee also:\" Intention Economy\"";
+wf:tracker ind:this.
+:Iss1596569964752
+a ind:Someday, ind:Vertical;
+dc:title "Finances and Banking";
+dct:created "2020-08-04T19:39:24Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1596570124368
+a ind:Someday, ind:Vertical;
+dc:title "Gaming";
+dct:created "2020-08-04T19:42:04Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1596571277259
+a ind:Someday, ind:Vertical;
+dc:title "Education";
+dct:created "2020-08-04T20:01:17Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1596571413907
+a ind:Someday, ind:Vertical;
+dc:title "Legal";
+dct:created "2020-08-04T20:03:33Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1596571450373
+a ind:Someday, ind:Vertical;
+dc:title "Employment and taxes";
+dct:created "2020-08-04T20:04:10Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1596571545001
+a ind:Someday, ind:Vertical;
+dc:title "Government benefits";
+dct:created "2020-08-04T20:05:45Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1596571746337
+a ind:Someday, ind:Vertical;
+dc:title "Government services";
+dct:created "2020-08-04T20:09:06Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1596637175683
+a ind:ToBeDone;
+dc:title "Peer Review - Conferences";
+dct:created "2020-08-05T14:19:35Z"^^xsd:dateTime;
+wf:description
+"""Manage calls for papers, paper submission, review, selection, workshop/journal content curation, event program ....
+
+(See eg EZchair) (see dokieli)""";
+wf:tracker ind:this.
+:Iss1596637414603
+a ind:ToBeDone, ind:Vertical;
+dc:title "CRM";
+dct:created "2020-08-05T14:23:34Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Iss1599139413919
+a ind:OSCore, ind:Research;
+dc:title "Smart Groups and Smart Folders";
+dct:created "2020-09-03T13:23:33Z"^^xsd:dateTime;
+wf:description
+"Allow users to create virtual folders and groups which are defined by logical rules. Like Smart Albums on Mac IPhoto for examle. Then allow thoi ";
+wf:tracker ind:this.
+:Iss1599947729530
+a ind:OSCore, ind:Released;
+dc:title "Access Control";
+dct:created "2020-09-12T21:55:29Z"^^xsd:dateTime;
+wf:attachment in:this;
+wf:description
+"Users have a UI for controlling who and what gets what sort of access (Read, Write, Append, Control access) to what (Folders, Files).";
+wf:tracker ind:this.
+:Iss1600684396711
+a ind:Vertical, ind:Works;
+dc:title "Encryption (client side)";
+dct:created "2020-09-21T10:33:16Z"^^xsd:dateTime;
+wf:description
+"""Client-side encryption is essential for if you want to remove the need to trust their pod provider. This is easy to do in principle. The challenge tends to be key management. For one person, how do I store my keys? For a group, how do I share them securely?
+
+It may be good to first build specific apps, like password vaults, which are used by just one person and not shared, to make key management easier.
+
+Note if you leave an encrypted file in your pod, an easy attack is to brute force attack by trying all the combinations, if your key is short like a PIN. So keys have to be big.
+
+This is just like leaving app-encrypted file in your pod, like encrypted PDFs.""";
+wf:tracker ind:this.
+:Iss1601045304151
+a ind:ClientExtended, ind:ToBeDone;
+dc:title "Import and Export for Contacts";
+dct:created "2020-09-25T14:48:24Z"^^xsd:dateTime;
+wf:attachment
+m:shapes,
+<https://github.com/linkeddata/swap/blob/master/pim/readMacAddressBook.py>;
+wf:description
+"""These tools or apps allow users to simply import their contacts from existing things into solid, and also potentially to export them again in the reverse direction. For the best level, two-way synch. The solid shapes should be compatible with the SolidOS contacts pane. See the relevant shapes.
+
+This requirement will be met, we imagine, but a set of tools for different platforms, possibly including native apps and command line apps.""";
+wf:message :Msg1601460065626, :Msg1601554755036;
+wf:tracker ind:this.
+:Iss1601796410535
+a ind:ClientExtended, ind:ToBeDone;
+dc:title "Dynamic loading of SolidOS modules";
+dct:created "2020-10-04T07:26:50Z"^^xsd:dateTime;
+wf:description
+"""Dynamic loading of modules -- panes, views, etc as a function of the user's preferences. Possibly also as a function of the data publisher's recommendations, to allow people to publish domain data and supply SolidOS modules for interacting with it.
+
+This obviously needs to be covered with a trust system, such as recording and checking the hash of modules when listing them, and checking public key signatures of developers.""";
+wf:tracker ind:this.
+:Iss1621857590685
+a ind:ToBeDone;
+dc:title "Smalltalk version of SolidOS";
+dct:created "2021-05-24T11:59:50Z"^^xsd:dateTime;
+wf:description "Making it easier to customize and extend SolidOS";
+wf:tracker ind:this.
+:Iss1621858457552
+a ind:ClientCore, ind:Research;
+dc:title "Smalltalk SolidOS";
+dct:created "2021-05-24T12:14:17Z"^^xsd:dateTime;
+wf:description
+"To make it easier for people to customize and extend SolidOS";
+wf:message :Msg1621858521531;
+wf:tracker ind:this.
+:Iss1634215653054
+a ind:ClientCore, ind:Released;
+dc:title "Contacts";
+dct:created "2021-10-14T12:47:33Z"^^xsd:dateTime;
+wf:description
+"""Mange a user's record of other people and organizations in their lives, including their relationships with them in Solid apps, like friendship, chats, etc
+
+The group management is key to the authorization systems.""";
+wf:tracker ind:this.
+:Iss1634216897823
+a ind:ClientExtended, ind:NextSession;
+dc:title "Link chat and issue tracking";
+dct:created "2021-10-14T13:08:17Z"^^xsd:dateTime;
+wf:description
+"""A chat with linked issue list can be a powerful combination.
+
+Allow people to take a message in the chat as the seed of a task,
+Allow people looking at the chat to see the current state of the task.
+Give kudos for raising/reviewing/closing issues in the chat as positive re-enforcement
+
+Action items from the meeting in the chat. Also the agenda for the meeting could be an issue tracker.
+""";
+wf:tracker ind:this.
+:Iss1650321293909
+a ind:Research, ind:Vertical;
+dc:title "Wait I can edit?";
+dct:created "2022-04-18T22:34:53Z"^^xsd:dateTime;
+wf:description "Can I edit?";
+wf:tracker ind:this.
+:Iss1695038221491
+a ind:Someday;
+dc:title "Upload";
+dct:created "2023-09-18T11:57:01Z"^^xsd:dateTime;
+wf:tracker ind:this.
+:Msg1595433283624
+dct:created "2020-07-22T15:54:43Z"^^xsd:dateTime;
+sioc:content
+"Important values include the tests being defined very declaratively, ie in RDF, so that multiple test rigs can be driven from the same test definition.";
+foaf:maker c:me.
+:Msg1595438722731
+dct:created "2020-07-22T17:25:22Z"^^xsd:dateTime;
+sioc:content "";
+foaf:maker c:me.
+:Msg1595502123910
+dct:created "2020-07-23T11:02:03Z"^^xsd:dateTime;
+sioc:content
+"Note we have a common shape definition and several implementations but they don't interoperate at the moment.";
+foaf:maker c0:me.
+:Msg1595596711930
+dct:created "2020-07-24T13:18:31Z"^^xsd:dateTime;
+sioc:content "hmmmm";
+foaf:maker c0:me.
+:Msg1597273983364
+dct:created "2020-08-12T23:13:03Z"^^xsd:dateTime;
+sioc:content "We are coordinating in https://gitter.im/solid/chat-app";
+foaf:maker c0:me.
+:Msg1600893931849
+dct:created "2020-09-23T20:45:31Z"^^xsd:dateTime;
+sioc:content
+"""Mentioned https://gitter.im/solid/chat?at=5f6b04aa417bf140aa09b52a
+""";
+foaf:maker c0:me.
+:Msg1601460065626
+dct:created "2020-09-30T10:01:05Z"^^xsd:dateTime;
+sioc:content
+"To make sire everyone makes the data compatible with the other solid apps, specifically SolidOS contacts, here are the shapes: the shapes are available at https://github.com/inrupt/pod-browser/tree/master/shapes. ";
+foaf:maker c1:me.
+:Msg1601554755036
+dct:created "2020-10-01T12:19:15Z"^^xsd:dateTime;
+sioc:content
+"I've linked readMacAddressBook.py below. That is a python program I wrote a while back to extract contacts from my Mac laptop into RDF files. At the moment it stores them as a bunch of files. You could upload your files using a different program, or ideally fix it to write straight to your pod.";
+foaf:maker c1:me.
+:Msg1621858521531
+dct:created "2021-05-24T12:15:21Z"^^xsd:dateTime;
+sioc:content "";
+foaf:maker c2:me.
+:Msg1622629984131
+dct:created "2021-06-02T10:33:04Z"^^xsd:dateTime;
+sioc:content
+"Issue 62 below is an issue on the M-LD project to integrate to Solid. https://github.com/m-ld/m-ld-spec/issues/62";
+foaf:maker c0:me.
+:Msg1622630060345
+dct:created "2021-06-02T10:34:20Z"^^xsd:dateTime;
+sioc:content
+"""Research, prototype, and test a technology for real-time group collaborative editing of structured web resources, securely, and respecting privacy.
+
+Achieve this by combining Solid, a specification that lets people store their data securely in decentralised data stores, and m-ld, a technology for real-time information sharing.
+
+These technologies share a common data representation, making the combination natural and harmonious. Solid will provide for Identity, Authentication, Authorisation and server storage of resources, while m-ld will provide real-time synchronisation of resource replicas, including locally on devices.
+
+Benefits to users of apps built with this innovation would include the ability to collaborate on documents in real-time, the ability to work offline, and greater performance and resilience of the app, so that they are always able to continue acting on information.
+""";
+foaf:maker c0:me.
+:Msg1622630233383
+dct:created "2021-06-02T10:37:13Z"^^xsd:dateTime;
+sioc:content
+"""4061 Below is a Solid Forum topic "Live shared Pod Data \u2013 making it happen" """;
+foaf:maker c0:me.
+:Msg1622630274709
+dct:created "2021-06-02T10:37:54Z"^^xsd:dateTime;
+sioc:content
+"\"Directions for patch distribution\" is a timbl note from 2017";
+foaf:maker c0:me.
